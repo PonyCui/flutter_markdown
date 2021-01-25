@@ -193,10 +193,9 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
   }
 
   void _parseMarkdown() {
-    final MarkdownStyleSheet fallbackStyleSheet =
-        kFallbackStyle(context, widget.styleSheetTheme);
-    final MarkdownStyleSheet styleSheet =
-        fallbackStyleSheet.merge(widget.styleSheet);
+    // final MarkdownStyleSheet fallbackStyleSheet =
+    //     kFallbackStyle(context, widget.styleSheetTheme);
+    final MarkdownStyleSheet styleSheet = widget.styleSheet;
 
     _disposeRecognizers();
 
