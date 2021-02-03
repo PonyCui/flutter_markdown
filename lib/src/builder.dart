@@ -152,8 +152,18 @@ class MarkdownBuilder implements md.NodeVisitor {
 
     _blocks.add(_BlockElement(null));
 
+    bool accpetedP = false;
+
     for (md.Node node in nodes) {
       assert(_blocks.length == 1);
+      if (styleSheet.pMaxLines != null && styleSheet.pMaxLines > 0) {
+        if (accpetedP) {
+          continue;
+        }
+        if (node is md.Element && node.tag == 'p') {
+          accpetedP = true;
+        }
+      }
       node.accept(this);
     }
 
