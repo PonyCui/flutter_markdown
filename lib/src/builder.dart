@@ -587,6 +587,8 @@ class MarkdownBuilder implements md.NodeVisitor {
         text: text,
         textScaleFactor: styleSheet.textScaleFactor,
         textAlign: textAlign ?? TextAlign.start,
+        maxLines: styleSheet.pMaxLines,
+        overflow: TextOverflow.ellipsis,
       );
     }
   }

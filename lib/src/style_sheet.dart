@@ -11,6 +11,7 @@ class MarkdownStyleSheet {
   MarkdownStyleSheet({
     this.a,
     this.p,
+    this.pMaxLines,
     this.code,
     this.h1,
     this.h2,
@@ -444,6 +445,9 @@ class MarkdownStyleSheet {
 
   /// The [TextStyle] to use for `p` elements.
   final TextStyle p;
+
+  /// The maxLines to use for `p` elements.
+  final int pMaxLines;
 
   /// The [TextStyle] to use for `code` elements.
   final TextStyle code;
