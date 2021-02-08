@@ -244,8 +244,10 @@ class MarkdownBuilder implements md.NodeVisitor {
               ? _inlines.last.style.merge(styleSheet.blockquote)
               : _inlines.last.style,
           text: _isInBlockquote
-              ? text.text
-              : text.text.replaceAll(RegExp(r" ?\n"), " "),
+              ? text.text.replaceAll('<br>', '\n')
+              : text.text
+                  .replaceAll(RegExp(r" ?\n"), " ")
+                  .replaceAll('<br>', '\n'),
           recognizer: _linkHandlers.isNotEmpty ? _linkHandlers.last : null,
         ),
         textAlign: _textAlignForBlockTag(_currentBlockTag),
@@ -598,9 +600,7 @@ class MarkdownBuilder implements md.NodeVisitor {
         textScaleFactor: styleSheet.textScaleFactor,
         textAlign: textAlign ?? TextAlign.start,
         maxLines: styleSheet.pMaxLines,
-        overflow: styleSheet.pMaxLines != null && styleSheet.pMaxLines > 0
-            ? TextOverflow.ellipsis
-            : TextOverflow.visible,
+        overflow: TextOverflow.visible,
       );
     }
   }
